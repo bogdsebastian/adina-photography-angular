@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
 import { App } from './app';
 
 describe('App', () => {
@@ -14,10 +15,15 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should set the page title from config', () => {
+    const titleService = TestBed.inject(Title);
+    const setTitleSpy = vi.spyOn(titleService, 'setTitle');
+
     const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, adina-photography-angular');
+    
+    fixture.detectChanges();
+
+    expect(setTitleSpy).toHaveBeenCalledExactlyOnceWith('Collide & Capture');
+    expect(titleService.getTitle()).toBe('Collide & Capture');
   });
 });
