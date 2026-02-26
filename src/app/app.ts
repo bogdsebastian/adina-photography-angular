@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ConfigService } from './services/config.service';
+import { Config } from './services/config';
 import { Title } from '@angular/platform-browser';
 
 
@@ -13,7 +13,7 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './app.css'
 })
 export class App {
-  private readonly configService = inject(ConfigService);
+  private readonly configService = inject(Config);
   private readonly titleService = inject(Title);
 
   protected readonly title = this.configService.appTitle;

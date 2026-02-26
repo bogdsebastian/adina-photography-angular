@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import appConfig from '../../assets-config/global-config.json';
-import type { AppConfig } from '../models/app-config';
+import appContentConfig from '../../assets-config/global-config.json';
+import type { AppContentConfig } from '../models/app-content-config.model';
 
 /**
  * Configuration service for app-wide settings.
@@ -24,8 +24,8 @@ import type { AppConfig } from '../models/app-config';
  * This allows config updates via Firebase CLI without rebuilding the Angular app.
  */
 @Injectable({ providedIn: 'root' })
-export class ConfigService {
-  private readonly config: AppConfig = appConfig;
+export class Config {
+  private readonly config: AppContentConfig = appContentConfig;
 
   get navbarTitle(): string {
     return this.config.app.navbarTitle;
@@ -33,9 +33,5 @@ export class ConfigService {
 
   get appTitle(): string {
     return this.config.app.appTitle;
-  }
-
-  getConfig(): AppConfig {
-    return this.config;
   }
 }
