@@ -15,13 +15,13 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should set the page title from config', () => {
+  it('should set the page title from config', async () => {
     const titleService = TestBed.inject(Title);
     const setTitleSpy = vi.spyOn(titleService, 'setTitle');
 
     const fixture = TestBed.createComponent(App);
     
-    fixture.detectChanges();
+    fixture.whenStable();
 
     expect(setTitleSpy).toHaveBeenCalledExactlyOnceWith('Collide & Capture');
     expect(titleService.getTitle()).toBe('Collide & Capture');

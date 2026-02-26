@@ -1,4 +1,4 @@
-export interface AppConfig {
+export interface AppContentConfig {
   app: {
     navbarTitle: string;
     appTitle: string;
