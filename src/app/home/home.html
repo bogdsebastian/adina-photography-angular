@@ -1,0 +1,172 @@
+<adp-hero />
+
+<!-- Why Choose Us -->
+<section class="bg-background py-20" aria-labelledby="why-choose-heading">
+  <div class="container mx-auto px-4">
+    <h2
+      id="why-choose-heading"
+      class="mb-16 text-center font-display text-4xl font-semibold md:text-5xl"
+    >
+      {{ lang.t('home.whyChoose.title') }}
+    </h2>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div class="p-6 text-center">
+        <svg
+          class="mx-auto mb-4 h-12 w-12 text-accent"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+          />
+          <circle cx="12" cy="13" r="3" />
+        </svg>
+        <h3 class="mb-3 font-display text-xl font-semibold">
+          {{ lang.t('home.whyChoose.quality.title') }}
+        </h3>
+        <p class="text-muted-foreground">{{ lang.t('home.whyChoose.quality.description') }}</p>
+      </div>
+      <div class="p-6 text-center">
+        <svg
+          class="mx-auto mb-4 h-12 w-12 text-accent"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"
+          />
+          <circle cx="12" cy="8" r="6" />
+        </svg>
+        <h3 class="mb-3 font-display text-xl font-semibold">
+          {{ lang.t('home.whyChoose.award.title') }}
+        </h3>
+        <p class="text-muted-foreground">{{ lang.t('home.whyChoose.award.description') }}</p>
+      </div>
+      <div class="p-6 text-center">
+        <svg
+          class="mx-auto mb-4 h-12 w-12 text-accent"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <h3 class="mb-3 font-display text-xl font-semibold">
+          {{ lang.t('home.whyChoose.clientFocus.title') }}
+        </h3>
+        <p class="text-muted-foreground">{{ lang.t('home.whyChoose.clientFocus.description') }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Work -->
+<section class="bg-card py-20" aria-labelledby="featured-work-heading">
+  <div class="container mx-auto px-4">
+    <h2
+      id="featured-work-heading"
+      class="mb-16 text-center font-display text-4xl font-semibold md:text-5xl"
+    >
+      {{ lang.t('home.featured.title') }}
+    </h2>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div class="group overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+        <div class="relative h-80 w-full">
+          <img
+            ngSrc="/images/portfolio-wedding.jpg"
+            alt="Elegant wedding portrait of bride and groom with romantic lighting"
+            fill
+            sizes="(min-width: 768px) 33vw, 100vw"
+            class="object-cover"
+          />
+        </div>
+        <div class="bg-background p-6">
+          <h3 class="mb-2 font-display text-xl font-semibold">
+            {{ lang.t('home.featured.wedding.title') }}
+          </h3>
+          <p class="text-muted-foreground">{{ lang.t('home.featured.wedding.description') }}</p>
+        </div>
+      </div>
+      <div class="group overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+        <div class="relative h-80 w-full">
+          <img
+            ngSrc="/images/portfolio-portrait.jpg"
+            alt="Professional business portrait with studio lighting"
+            fill
+            sizes="(min-width: 768px) 33vw, 100vw"
+            class="object-cover"
+          />
+        </div>
+        <div class="bg-background p-6">
+          <h3 class="mb-2 font-display text-xl font-semibold">
+            {{ lang.t('home.featured.portrait.title') }}
+          </h3>
+          <p class="text-muted-foreground">{{ lang.t('home.featured.portrait.description') }}</p>
+        </div>
+      </div>
+      <div class="group overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+        <div class="relative h-80 w-full">
+          <img
+            ngSrc="/images/portfolio-event.jpg"
+            alt="Corporate event with dynamic lighting and crowd"
+            fill
+            sizes="(min-width: 768px) 33vw, 100vw"
+            class="object-cover"
+          />
+        </div>
+        <div class="bg-background p-6">
+          <h3 class="mb-2 font-display text-xl font-semibold">
+            {{ lang.t('home.featured.event.title') }}
+          </h3>
+          <p class="text-muted-foreground">{{ lang.t('home.featured.event.description') }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 text-center">
+      <a
+        routerLink="/portfolio"
+        class="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        {{ lang.t('home.featured.viewFull') }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-primary py-20 text-primary-foreground" aria-labelledby="cta-heading">
+  <div class="container mx-auto px-4 text-center">
+    <h2 id="cta-heading" class="mb-6 font-display text-4xl font-semibold md:text-5xl">
+      {{ lang.t('home.cta.title') }}
+    </h2>
+    <p class="mx-auto mb-8 max-w-2xl text-xl opacity-90">
+      {{ lang.t('home.cta.subtitle') }}
+    </p>
+    <a
+      routerLink="/contact"
+      class="inline-flex h-11 items-center justify-center rounded-md bg-secondary px-8 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      {{ lang.t('home.cta.button') }}
+    </a>
+  </div>
+</section>

@@ -1,12 +1,14 @@
-<!-- app.component.html -->
-<header>
-  <!-- <adp-navbar></adp-navbar> -->
-</header>
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:ring-2 focus:ring-ring"
+>
+  Skip to main content
+</a>
 
-<main>
+<adp-navbar />
+
+<main id="main-content" class="flex-1">
   <router-outlet />
 </main>
 
-<footer>
-  <!-- <adp-footer></adp-footer> -->
-</footer>
+<adp-footer />

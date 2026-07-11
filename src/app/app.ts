@@ -1,16 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Config } from './services/config';
 import { Title } from '@angular/platform-browser';
-
+import { Navbar } from '../navbar/navbar';
+import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'adp-root',
-  imports: [
-    RouterOutlet
-  ],
+  imports: [RouterOutlet, Navbar, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'flex min-h-screen flex-col',
+  },
 })
 export class App {
   private readonly configService = inject(Config);
