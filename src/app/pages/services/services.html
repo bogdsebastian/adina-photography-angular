@@ -1,0 +1,146 @@
+<!-- Hero -->
+<section
+  class="bg-gradient-to-b from-primary to-primary/90 py-20 text-primary-foreground"
+  aria-labelledby="services-hero-heading"
+>
+  <div class="container mx-auto px-4 text-center">
+    <h1 id="services-hero-heading" class="mb-6 font-display text-5xl font-bold md:text-6xl">
+      {{ lang.t('services.hero.title') }}
+    </h1>
+    <p class="mx-auto max-w-3xl text-xl opacity-90 md:text-2xl">
+      {{ lang.t('services.hero.subtitle') }}
+    </p>
+  </div>
+</section>
+
+<!-- Services grid -->
+<section class="py-20" aria-labelledby="services-list-heading">
+  <div class="container mx-auto px-4">
+    <h2 id="services-list-heading" class="sr-only">Available photography services</h2>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      @for (service of services; track service.key) {
+        <div
+          class="rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-xl"
+        >
+          <div class="flex flex-col space-y-1.5 p-6">
+            <svg
+              class="mb-4 h-12 w-12 text-accent"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              @switch (service.icon) {
+                @case ('heart') {
+                  <path
+                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                  />
+                }
+                @case ('camera') {
+                  <path
+                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+                  />
+                  <circle cx="12" cy="13" r="3" />
+                }
+                @case ('briefcase') {
+                  <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                  <rect width="20" height="14" x="2" y="6" rx="2" />
+                }
+                @case ('baby') {
+                  <path d="M9 12h.01" />
+                  <path d="M15 12h.01" />
+                  <path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5" />
+                  <path
+                    d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"
+                  />
+                }
+                @case ('users') {
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                }
+                @case ('image') {
+                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                  <circle cx="9" cy="9" r="2" />
+                  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                }
+              }
+            </svg>
+            <h3 class="font-display text-2xl font-semibold leading-none tracking-tight">
+              {{ lang.t(service.key + '.title') }}
+            </h3>
+            <p class="text-base text-muted-foreground">
+              {{ lang.t(service.key + '.description') }}
+            </p>
+          </div>
+          <div class="p-6 pt-0">
+            <ul class="space-y-2" role="list">
+              @for (feature of lang.list(service.key + '.features'); track feature) {
+                <li class="flex items-start">
+                  <span class="mr-2 text-accent" aria-hidden="true">•</span>
+                  <span class="text-sm text-muted-foreground">{{ feature }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="bg-card py-20" aria-labelledby="process-heading">
+  <div class="container mx-auto px-4">
+    <h2 id="process-heading" class="mb-16 text-center font-display text-4xl font-semibold md:text-5xl">
+      {{ lang.t('services.process.title') }}
+    </h2>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+      @for (step of processSteps; track step.number) {
+        <div class="text-center">
+          <div
+            class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-2xl font-bold text-accent-foreground"
+            aria-hidden="true"
+          >
+            {{ step.number }}
+          </div>
+          <h3 class="mb-2 font-display text-xl font-semibold">
+            {{ lang.t(step.key + '.title') }}
+          </h3>
+          <p class="text-muted-foreground">{{ lang.t(step.key + '.description') }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20" aria-labelledby="services-cta-heading">
+  <div class="container mx-auto px-4 text-center">
+    <h2 id="services-cta-heading" class="mb-6 font-display text-4xl font-semibold md:text-5xl">
+      {{ lang.t('services.cta.title') }}
+    </h2>
+    <p class="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground">
+      {{ lang.t('services.cta.subtitle') }}
+    </p>
+    <div class="flex flex-col justify-center gap-4 sm:flex-row">
+      <a
+        routerLink="/pricing"
+        class="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        {{ lang.t('services.cta.viewPricing') }}
+      </a>
+      <a
+        routerLink="/contact"
+        class="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        {{ lang.t('services.cta.contactUs') }}
+      </a>
+    </div>
+  </div>
+</section>

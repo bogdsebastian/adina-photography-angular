@@ -1,0 +1,31 @@
+<section
+  class="relative flex h-[90vh] items-center justify-center text-center"
+  aria-label="Hero section"
+>
+  <!-- The React app used a CSS background-image; an <img> with priority improves LCP -->
+  <img ngSrc="/images/hero-image.jpg" alt="" fill priority sizes="100vw" class="object-cover" />
+  <div class="absolute inset-0 bg-black/40" aria-hidden="true"></div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <h1 class="mb-6 animate-fade-in font-display text-5xl font-bold text-white md:text-7xl">
+      {{ lang.t('home.hero.title') }}
+    </h1>
+    <p class="mx-auto mb-8 max-w-2xl text-xl text-white/90 md:text-2xl">
+      {{ lang.t('home.hero.subtitle') }}
+    </p>
+    <div class="flex flex-col justify-center gap-4 sm:flex-row">
+      <a
+        routerLink="/portfolio"
+        class="inline-flex h-11 items-center justify-center rounded-md bg-accent px-8 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        {{ lang.t('home.hero.viewPortfolio') }}
+      </a>
+      <a
+        routerLink="/contact"
+        class="inline-flex h-11 items-center justify-center rounded-md border border-white bg-white/10 px-8 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        {{ lang.t('home.hero.getInTouch') }}
+      </a>
+    </div>
+  </div>
+</section>

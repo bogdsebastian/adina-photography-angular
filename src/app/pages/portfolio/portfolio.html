@@ -1,0 +1,101 @@
+<!-- Hero -->
+<section
+  class="bg-gradient-to-b from-primary to-primary/90 py-20 text-primary-foreground"
+  aria-labelledby="portfolio-hero-heading"
+>
+  <div class="container mx-auto px-4 text-center">
+    <h1 id="portfolio-hero-heading" class="mb-6 font-display text-5xl font-bold md:text-6xl">
+      {{ lang.t('portfolio.hero.title') }}
+    </h1>
+    <p class="mx-auto max-w-3xl text-xl opacity-90 md:text-2xl">
+      {{ lang.t('portfolio.hero.subtitle') }}
+    </p>
+  </div>
+</section>
+
+<!-- Filters -->
+<section class="border-b border-border py-12" aria-labelledby="portfolio-filter-heading">
+  <div class="container mx-auto px-4">
+    <h2 id="portfolio-filter-heading" class="sr-only">Filter portfolio by category</h2>
+    <div
+      class="flex flex-wrap justify-center gap-4"
+      role="tablist"
+      aria-label="Portfolio categories"
+    >
+      @for (category of categories; track category.id) {
+        <button
+          type="button"
+          role="tab"
+          (click)="setFilter(category.id)"
+          [attr.aria-selected]="activeFilter() === category.id"
+          aria-controls="portfolio-grid"
+          class="inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          [class]="
+            activeFilter() === category.id
+              ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+              : 'border border-input bg-background hover:bg-accent hover:text-accent-foreground'
+          "
+        >
+          {{ lang.t(category.labelKey) }}
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Grid -->
+<section class="py-20" aria-labelledby="portfolio-grid-heading">
+  <div class="container mx-auto px-4">
+    <h2 id="portfolio-grid-heading" class="sr-only">Portfolio images</h2>
+    <div
+      id="portfolio-grid"
+      class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+      role="tabpanel"
+    >
+      @for (item of filteredItems(); track item.id) {
+        <article class="group overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+          <div class="relative h-80 overflow-hidden">
+            <img
+              [ngSrc]="item.image"
+              [alt]="item.alt"
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              class="object-cover transition-transform group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity group-hover:opacity-100"
+            >
+              <div class="p-6 text-center text-white">
+                <h3 class="mb-2 font-display text-xl font-semibold">{{ lang.t(item.titleKey) }}</h3>
+                <p class="text-sm">{{ lang.t(item.descriptionKey) }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+    @if (filteredItems().length === 0) {
+      <div class="py-12 text-center">
+        <p class="text-xl text-muted-foreground">{{ lang.t('portfolio.noItems') }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-card py-20" aria-labelledby="portfolio-cta-heading">
+  <div class="container mx-auto px-4 text-center">
+    <h2 id="portfolio-cta-heading" class="mb-6 font-display text-4xl font-semibold md:text-5xl">
+      {{ lang.t('portfolio.cta.title') }}
+    </h2>
+    <p class="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground">
+      {{ lang.t('portfolio.cta.subtitle') }}
+    </p>
+    <a
+      routerLink="/contact"
+      class="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      {{ lang.t('portfolio.cta.button') }}
+    </a>
+  </div>
+</section>

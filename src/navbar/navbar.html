@@ -1,0 +1,144 @@
+<header
+  class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+  <nav
+    class="container mx-auto flex h-16 items-center justify-between px-4"
+    aria-label="Main navigation"
+  >
+    <a
+      routerLink="/"
+      class="flex items-center space-x-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+      aria-label="Home"
+    >
+      <span class="font-display text-2xl font-semibold">{{ config.navbarTitle }}</span>
+    </a>
+
+    <!-- Desktop navigation -->
+    <div class="hidden items-center space-x-6 md:flex">
+      @for (item of navItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="text-accent"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ariaCurrentWhenActive="page"
+          class="rounded-sm px-2 py-1 text-sm font-medium transition-colors hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        >
+          {{ lang.t(item.labelKey) }}
+        </a>
+      }
+    </div>
+
+    <div class="flex items-center gap-2">
+      <!-- Language selector -->
+      <div class="relative">
+        <button
+          type="button"
+          (click)="toggleLangMenu()"
+          [attr.aria-expanded]="langMenuOpen()"
+          aria-label="Select language"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <svg
+            class="h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </button>
+        @if (langMenuOpen()) {
+          <div
+            class="absolute right-0 z-50 mt-2 w-40 rounded-md border border-border bg-popover py-1 text-popover-foreground shadow-md"
+          >
+            <button
+              type="button"
+              (click)="selectLanguage('en')"
+              class="flex w-full items-center px-3 py-2 text-left text-sm hover:bg-muted focus:bg-muted focus:outline-none"
+              [class]="lang.current() === 'en' ? 'bg-accent/10' : ''"
+            >
+              🇬🇧 English
+            </button>
+            <button
+              type="button"
+              (click)="selectLanguage('de')"
+              class="flex w-full items-center px-3 py-2 text-left text-sm hover:bg-muted focus:bg-muted focus:outline-none"
+              [class]="lang.current() === 'de' ? 'bg-accent/10' : ''"
+            >
+              🇩🇪 Deutsch
+            </button>
+          </div>
+        }
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        type="button"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle menu"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:hidden"
+      >
+        @if (mobileMenuOpen()) {
+          <svg
+            class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        } @else {
+          <svg
+            class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 12h16" />
+            <path d="M4 6h16" />
+            <path d="M4 18h16" />
+          </svg>
+        }
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile navigation -->
+  @if (mobileMenuOpen()) {
+    <div class="border-t border-border bg-background md:hidden">
+      <div class="container mx-auto flex flex-col space-y-4 px-4 py-4">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="text-accent"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ariaCurrentWhenActive="page"
+            (click)="closeMobileMenu()"
+            class="rounded-sm px-2 py-1 text-sm font-medium transition-colors hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          >
+            {{ lang.t(item.labelKey) }}
+          </a>
+        }
+      </div>
+    </div>
+  }
+</header>
